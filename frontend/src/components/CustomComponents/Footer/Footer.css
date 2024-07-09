@@ -1,0 +1,13 @@
+.footer{
+    position: absolute;
+    bottom:0;
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 100%;
+
+}
+
+.footer ul{
+    padding: 100px;
+}

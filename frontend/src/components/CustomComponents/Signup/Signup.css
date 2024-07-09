@@ -1,0 +1,28 @@
+
+
+.second{
+    margin-left: 40%;
+}
+h1{
+    margin-left: 47%;
+}
+.input_box{
+ 
+ padding: 7px;
+ display: block;
+ border: 1px solid skyblue;
+ width: 300px;
+ margin: 20px;
+  
+
+
+}
+.signupbutt{
+    margin: 20px;
+    width: 150px;
+    padding:10px;
+    border: 1px solid;
+    background-color: skyblue;
+    text-align: center;
+    justify-content: center;
+}

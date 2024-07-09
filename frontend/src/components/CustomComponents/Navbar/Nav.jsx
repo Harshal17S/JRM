@@ -23,6 +23,10 @@ const Nav = () => {
         <li>
           <Link to="/logout">Logout</Link>
         </li>
+        <li>
+          <Link to="/signup">Signup </Link>
+        </li>
+
 
       </ul>
       Header files
