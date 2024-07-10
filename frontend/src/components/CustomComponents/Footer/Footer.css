@@ -5,9 +5,10 @@
     color: white;
     text-align: center;
     width: 100%;
+    padding: 80px;
 
 }
 
 .footer ul{
-    padding: 100px;
+    padding: 50px;
 }
