@@ -7,12 +7,12 @@ const Signup = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const navigate = useNavigate();
-  useEffect(()=>{
+  useEffect(() => {
     const auth = localStorage.getItem("user");
-    if(auth){
+    if (auth) {
       navigate("/");
     }
-  },[])
+  }, []);
   const CollectData = async () => {
     console.warn(name, email, password);
     let result = await fetch("http://localhost:5000/register", {
@@ -30,7 +30,7 @@ const Signup = () => {
   };
   return (
     <div className="register_form">
-      <h1 className="text-3xl ">Form</h1>
+      <h1 className="h1tag text-3xl ">Form</h1>
       <div className="second">
         <input
           className="input_box"
@@ -53,7 +53,7 @@ const Signup = () => {
           value={password}
           onChange={(e) => setpassword(e.target.value)}
         />
-        <button onClick={CollectData} className="signupbutt">
+        <button onClick={CollectData} className="signupbutt  text-red-300">
           Signup
         </button>
       </div>

@@ -1,9 +1,15 @@
 
-
+.register_form{
+    justify-content: center;
+    padding-top: 20px;
+    background-color: rgb(252 165 165);;
+    margin-top: 5%;
+    border: 2PX SOLID black;
+}
 .second{
     margin-left: 40%;
 }
-h1{
+.h1tag{
     margin-left: 47%;
 }
 .input_box{
@@ -22,7 +28,9 @@ h1{
     width: 150px;
     padding:10px;
     border: 1px solid;
-    background-color: skyblue;
+    background-color: black;
     text-align: center;
     justify-content: center;
 }
+
+    
