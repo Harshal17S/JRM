@@ -19,7 +19,7 @@ const Nav = () => {
       <img className=" rounded-full h-10 my-auto" alt="harox" src={Photo}/>
         <li>
           {" "}
-          <Link to="/">Products</Link>
+          <Link to="/product">Products</Link>
         </li>
 
         <li>
