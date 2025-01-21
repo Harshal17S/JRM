@@ -7,6 +7,8 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const sample = require("./models/sample");
+const{jwtAuthMiddleware,generateToken}=require("./db/jwt")
+
 
 app.use(express.json());
 app.use(cors());
@@ -23,24 +25,59 @@ app.post("/register", async (req, resp) => {
   };
   let USer = new user(NewUser);
   let result = await USer.save();
-  resp.send(result);
-  // resp.send(req.body)
+  const payload={
+    id:result.id,
+    name:result.name
+  }
+  const token=generateToken(payload);
+  console.log(token);
+  // resp.send(result);
+  // resp.send(token);
+ 
+  resp.status(200).json({result:result,token:token})
+   // resp.send(req.body)
 });
 
-app.post("/login", async (req, resp) => {
-  if (req.body.password && req.body.email) {
-    let User = await sample.findOne(req.body).select("-password");
-    if (User) {
-      resp.send(User);
-    } else {
-      resp.send({ result: "No user Found" });
-    }
-  } else {
-    resp.send({ result: "No user Found" });
+// app.post("/login", async (req, resp) => {
+//   if (req.body.password && req.body.email) {
+//     let User = await sample.findOne(req.body).select("-password");
+//     if (User) {
+//       resp.send(User);
+//     } else {
+//       resp.send({ result: "No user Found" });
+//     }
+//   } else {
+//     resp.send({ result: "No user Found" });
+//   }
+// });
+// app.get("/", function (req, resp) {
+//   resp.send("App running");
+// });
+
+const number={
+    
+}
+
+app.post("/login",async(req,resp)=>{
+try{
+  const{email,password}=req.body;
+  const a=await user.findOne({email:email});
+  if(!a ||!(await a.comparePassword(password))){
+    return res.status(404).json({error:'Invalid Name or password'});
   }
-});
-app.get("/", function (req, resp) {
-  resp.send("App running");
+  //genearate token
+  const payload={
+    id:user.id,
+    name:user.name
+  }
+  const token=generateToken(payload);
+  resp.status(200).json({token:token})
+
+}
+catch(err){
+  console.error(err);
+  resp.status(500).json({error:"Internal"});
+}
 });
 
 app.post("/add-product", async (req, resp) => {
@@ -76,4 +113,5 @@ app.post("/add-product", async (req, resp) => {
     );
     res.send(result);
   }),
+
   app.listen(5000);

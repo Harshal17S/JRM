@@ -33,20 +33,24 @@ function Product() {
       <ul>
         <li>S. No</li>
         <li>Name</li>
-        <li>Price</li>
-        <li>Category</li>
-        <li>Operation</li>
+        <li>Type</li>
+        <li>Requiredmoney</li>
+        <li>Mode</li>
+        <li>Rate</li>
+        <li>MobileNo</li>
       </ul>
       {
         product.map((item,index)=>
           <ul key={item._id}>
         <li>{index+1}</li>
         <li>{item.name}</li>
-        <li>{item.company}</li>
-        <li>{item.category}</li>
-        <li><button onClick={()=>deleteproduct(item._id)}>Delete</button>
-        <Link to={"/update/"+item._id}>Update</Link>
-        </li>
+        <li>{item.type}</li>
+        <li>{item.requiredmoney}</li>
+        <li>{item.mode}</li>
+        <li>{item.rate}</li>
+        <li>{item.mobile}</li>
+       
+        
       </ul>
         )
       }

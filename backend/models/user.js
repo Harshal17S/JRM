@@ -6,6 +6,10 @@ const userschema=new mongoose.Schema({
     email:String,
     password:String
 })
+
+userschema.methods.comparePassword = async function (candidatePassword) {
+    return await bcrypt.compare(candidatePassword, this.password);
+};
 // userschema.pre('save',async function(next){
 //     const user =this;
 //     if(!user.isModified("passsword")){

@@ -4,25 +4,26 @@ import './Products.css'
 
 const Products=()=>{
 
-    const [name, setName] = React.useState("");
-    const [price, setprice] = React.useState("");
+    const [name, setname] = React.useState("");
+    const [type, settype] = React.useState("");
    
-  const [category, setcategory] =React. useState("");
-  const [company, setcompany] = React.useState("");
+  const [requiredmoney, setrequiredmoney] =React. useState("");
+  const [mode, setmode] = React.useState("");
 
-  const [error,seterror]=React.useState("false");
+  const [rate,setrate]=React.useState("");
+  const [mobile,setmobile]=React.useState("");
 
   const addproduct=async()=>{
   
-    if(!name||!price || !category || !company){
-        seterror(true);
+    if(!name||!type || !requiredmoney || !mode ||!rate || !mobile ){
+        
         return false;
     }
     const userId=JSON.parse(localStorage.getItem('user'))._id;
     console.warn(userId);
     let result=await fetch("http://localhost:5000/add-product",{
         method:"post",
-        body:JSON.stringify({name,price,category,company,userId}),
+        body:JSON.stringify({name,type,requiredmoney,mode,rate,mobile}),
         headers:{
             "Content-type":"application/json"
         }
@@ -39,22 +40,29 @@ const Products=()=>{
        <div className="product">
 
        <h1 className=" text-xl center">Form</h1>
-       <input  className="inputbox" type="text" placeholder="Productname" value={name} onChange={(e)=>{
-        setName(e.target.value)
+       <input  className="inputbox" type="text" placeholder="Name" value={name} onChange={(e)=>{
+        setname(e.target.value)
        }}/>
-       {error && !name &&<span className=" text-red-600 mx-5">Enter Valid Name</span>}
-        <input className="inputbox" type="text" placeholder="Product price" value={price} onChange={(e)=>{
-        setprice(e.target.value)
+       
+        <input className="inputbox" type="text" placeholder="Personal/Business" value={type} onChange={(e)=>{
+        settype(e.target.value)
        }}/>
-        {error && !price &&<span className=" text-red-600 mx-5">Enter Valid price</span>}
-        <input  className="inputbox" type="text" placeholder="Category" value={category} onChange={(e)=>{
-        setcategory(e.target.value)
+        
+        <input  className="inputbox" type="text" placeholder="Enter Amount" value={requiredmoney} onChange={(e)=>{
+        setrequiredmoney(e.target.value)
        }}/>
-        {error && !category &&<span className=" text-red-600 mx-5">Enter Valid category</span>}
-        <input className="inputbox" type="text" placeholder="comapny" value={company} onChange={(e)=>{
-        setcompany(e.target.value)
+       
+        <input className="inputbox" type="text" placeholder="Equity/Interest" value={mode} onChange={(e)=>{
+        setmode(e.target.value)
        }}/>
-        {error && !company &&<span className=" text-red-600 mx-5">Enter Valid company</span>}
+
+<input className="inputbox" type="text" placeholder="Rate" value={rate} onChange={(e)=>{
+        setrate(e.target.value)
+       }}/>
+        <input className="inputbox" type="text" placeholder="Mobile No" value={mobile} onChange={(e)=>{
+    setmobile(e.target.value)
+       }}/>
+        
         <button  className="appbutt  text-red-300" onClick={addproduct}>Add product</button>
 
 
